@@ -1,1 +1,56 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    @apply min-h-screen antialiased;
+    @apply bg-[#faf7f2] text-stone-800;
+    @apply dark:bg-[#1c1a18] dark:text-stone-100;
+    background-image:
+      radial-gradient(
+        ellipse 90% 60% at 100% -10%,
+        rgb(251 191 36 / 0.12),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 70% 50% at 0% 100%,
+        rgb(20 184 166 / 0.1),
+        transparent
+      );
+  }
+
+  .dark body {
+    background-image:
+      radial-gradient(
+        ellipse 80% 50% at 80% -20%,
+        rgb(20 184 166 / 0.08),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 0% 100%,
+        rgb(245 158 11 / 0.06),
+        transparent
+      );
+  }
+}
+
+/* Softer “glass” — lighter in light mode, subtle in dark */
+.glass-panel {
+  @apply rounded-2xl border border-stone-200/90 bg-white/70 shadow-sm backdrop-blur-md;
+  @apply dark:border-white/10 dark:bg-white/[0.07] dark:shadow-[0_8px_32px_rgb(0_0_0/0.25)] dark:backdrop-blur-xl;
+}
+
+.glass-nav {
+  @apply border-b border-stone-200/90 bg-[#faf7f2]/85 backdrop-blur-xl;
+  @apply dark:border-white/10 dark:bg-[#1c1a18]/80;
+}
