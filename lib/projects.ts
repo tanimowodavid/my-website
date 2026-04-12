@@ -10,38 +10,51 @@ export type ProjectDetail = {
   solution: string;
   keyFeatures: string[];
   technicalDecisions: string[];
-  architectureMermaidPlaceholder: string;
   challenges: string[];
 };
 
 export const projects: ProjectDetail[] = [
   {
-    id: "design-system",
-    title: "Component Design System",
-    tagline: "Reusable UI primitives for product teams.",
-    cardImageUrl: "https://picsum.photos/seed/designsystem/800/480",
-    codeUrl: "https://github.com",
+    id: "planet-inc",
+    title: "Planet Inc. — E-commerce Backend",
+    tagline:
+      "Production-ready Django marketplace backend with semantic search and an AI shopping assistant.",
+    cardImageUrl: "/happy kid.png",
+    codeUrl: "https://github.com/tanimowodavid/planet-inc",
     overview:
-      "A token-driven React component library with documentation and visual regression tests, built to keep brand and accessibility consistent across web apps.",
+      "Planet Inc. is a comprehensive e-commerce backend built with Django for an online marketplace for collectibles and consumer goods. It combines traditional e-commerce (users, catalog, cart, orders, payments) with an AI-powered chat assistant for product recommendations and support. The system uses vector embeddings for complex product queries and real-time conversational help so customers can discover products that fit their interests.",
     problem:
-      "Teams were shipping one-off components with divergent spacing, color usage, and focus states. Onboarding new contributors meant re-explaining patterns that lived only in Slack threads.",
+      "Large catalogs make product discovery hard—especially in niches like collectibles where shoppers need personalized guidance. Many stores lack intelligent support, which hurts UX and raises support costs. Scaling backends for concurrency, inventory, and real-time AI adds more pressure. The work had to support complex search across big inventories, personalized experiences via AI, growth in users and transactions, and secure integration with third-party services.",
     solution:
-      "Centralized design tokens, a small set of composable primitives, and a docs site with live examples. Consumers import stable APIs while the system evolves behind semver.",
+      "I built a production-ready Django backend for the full e-commerce lifecycle with AI woven in. PostgreSQL with pgvector powers semantic product search; Redis backs caching and sessions; Celery runs async work. The assistant uses OpenAI for contextual recommendations and support-style conversations. The design keeps clear boundaries, documented APIs, and solid error handling, with containerization, automated tests, and a database layout meant to scale.",
     keyFeatures: [
-      "Themeable CSS variables with light/dark parity",
-      "Keyboard-first focus rings and WCAG AA contrast checks",
-      "Storybook-driven docs with prop tables and usage notes",
+      "RESTful API: Django REST Framework with JWT auth, pagination, and documented endpoints",
+      "AI shopping assistant: pgvector + OpenAI for contextual conversations and product discovery",
+      "Product catalog: multi-variant listings with automatic embedding generation for semantic search",
+      "Cart and checkout: inventory-aware totals and Paystack payment integration",
+      "User management: secure auth, roles, and profiles",
+      "Background jobs: Celery for email, payments follow-up, and AI-related tasks",
+      "Caching: Redis for sessions, selective API caching, and performance tuning",
+      "Testing: 90+ automated tests across models, APIs, auth, and business rules",
+      "Docker: docker-compose based local and deploy-style orchestration",
+      "Database work: PostgreSQL + vectors, indexing, and query optimization",
     ],
     technicalDecisions: [
-      "Chose CSS variables over runtime theme objects to avoid extra JS on critical path.",
-      "Used Radix-style composition for overlays and menus instead of bespoke DOM.",
-      "Pinned visual snapshots to catch unintended style drift in CI.",
+      "Django 6.0 for a mature, security-conscious stack aligned with current Python practice",
+      "PostgreSQL + pgvector instead of a separate vector DB for ACID behavior and tight Django integration",
+      "JWT over session-only auth for an API-first, scalable client model",
+      "Celery + Redis so AI and email work never block web requests",
+      "Docker Compose for repeatable dev and deployment environments",
+      "TDD-style workflow with pytest, fast SQLite in tests, and mocks for external APIs",
+      "REST-first design so multiple frontends can share the same backend",
     ],
-    architectureMermaidPlaceholder:
-      "flowchart LR\n  A[Tokens] --> B[Primitives]\n  B --> C[Patterns]\n  C --> D[Apps]",
     challenges: [
-      "Balancing flexibility with a narrow public API—too many props erodes consistency.",
-      "Keeping bundle size flat as the library grew; code-split heavy demos in docs only.",
+      "AI integration: balancing responsive chat with rate limits—graceful degradation when AI or upstream calls fail so the core shop still works.",
+      "Vector search: tuning pgvector indexes and when to generate embeddings on product writes without slowing common reads.",
+      "Checkout concurrency: keeping inventory correct under load using DB constraints and optimistic locking rather than fragile app-only locks.",
+      "External APIs: Paystack and OpenAI failures handled with retries, clear errors, and safe fallbacks.",
+      "Testing integrations: mocking AI and payments for stable CI while staying close to production behavior.",
+      "Ops tradeoff: Docker adds moving parts but pays back in consistency and onboarding for collaborators.",
     ],
   },
   {
@@ -66,8 +79,6 @@ export const projects: ProjectDetail[] = [
       "Chose columnar-friendly storage for raw events vs row store for aggregates.",
       "Scheduled jobs with explicit SLAs instead of continuous streaming for cost control.",
     ],
-    architectureMermaidPlaceholder:
-      "flowchart TB\n  Client --> Ingest\n  Ingest --> Queue\n  Queue --> Store\n  Store --> Rollups",
     challenges: [
       "Backfilling after schema changes without double-counting.",
       "Explaining eventual consistency to stakeholders who expect instant numbers.",

@@ -1,6 +1,5 @@
 /**
  * Placeholder profile data for the site assistant.
- * Replace with your real experience, links, and project blurbs.
  */
 export const bio = {
   name: "Tanimowo David",
@@ -10,46 +9,53 @@ export const bio = {
     "Building scalable systems with neat user interfaces — calm UX, solid backends.",
   location: "Update with your city / timezone",
   contact: {
-    email: "hello@example.com",
-    linkedin: "https://www.linkedin.com/in/yourprofile",
-    github: "https://github.com/yourusername",
+    email: "davidtanimowo01@gmail.com",
+    linkedin: "https://www.linkedin.com/in/tanimowodavid",
+    github: "https://github.com/tanimowodavid",
   },
   summary:
     "I enjoy shipping full-stack features end-to-end: APIs, databases, auth, and polished React/Next.js frontends. I care about accessibility, performance, and code that the next person can extend without guesswork.",
   skills: [
     "TypeScript",
-    "React & Next.js (App Router)",
+    "React & Next.js",
     "Node.js & APIs",
+    "Python & Django",
     "Testing & CI",
-    "Design systems",
+    "Systems Design",
   ],
   experience: [
     {
-      role: "Software engineer (example)",
-      company: "Example Corp",
-      period: "20XX — Present",
+      role: "Software engineer",
+      company: "self-employed",
+      period: "2023 — Present",
       highlights: [
-        "Led migration of a legacy dashboard to Next.js with improved LCP.",
-        "Introduced integration tests and preview deploys for safer releases.",
+        "Launched a personal website with an AI assistant that answers visitor questions about me and my work.",
+        "Contributed to freelance projects.",
       ],
     },
   ],
   projects: [
     {
-      id: "design-system",
-      name: "Component Design System",
+      id: "planet-inc",
+      name: "Planet Inc. — E-commerce Backend",
       oneLiner:
-        "Token-driven UI primitives with docs and visual regression coverage.",
+        "Django marketplace backend with pgvector semantic search, Celery, and an OpenAI-assisted shopping assistant.",
     },
     {
-      id: "analytics-pipeline",
-      name: "Event Analytics Pipeline",
+      id: "personal-website",
+      name: "Personal Website with AI Assistant",
       oneLiner:
-        "Buffered ingestion, validation, and rollups for product metrics.",
+        "A Next.js personal website with neat design and a custom AI assistant that answers visitor questions about me and my work, using OpenAI's API.",
+    },
+    {
+      id: "aura-finance",
+      name: "Aura Finance — Personal Finance App",
+      oneLiner:
+        "A telegram coaching app that enchourages users to save more and make better financial decisions.",
     },
   ],
-  education: ["Your degree / certifications — placeholder"],
-  interests: ["Open source", "Developer tooling", "Mentoring"],
+  education: ["Bachelor of engineering in electrical and electronics engineering, Olabisi Onabanjo University"],
+  interests: ["Open source", "Developer tooling", "Learning more about technology and how it can be used to solve real-world problems"],
 } as const;
 
 /** Serialized context injected into the assistant system prompt. */

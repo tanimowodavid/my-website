@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { getProjectById, projects } from "@/lib/projects";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { ContactSection } from "@/components/PortfolioSections";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -27,9 +28,18 @@ export default async function ProjectBriefPage({ params }: Props) {
   if (!project) notFound();
 
   const sections: { title: string; body: ReactNode }[] = [
-    { title: "Overview", body: <p className="leading-relaxed">{project.overview}</p> },
-    { title: "Problem", body: <p className="leading-relaxed">{project.problem}</p> },
-    { title: "Solution", body: <p className="leading-relaxed">{project.solution}</p> },
+    {
+      title: "Overview",
+      body: <p className="leading-relaxed">{project.overview}</p>,
+    },
+    {
+      title: "Problem",
+      body: <p className="leading-relaxed">{project.problem}</p>,
+    },
+    {
+      title: "Solution",
+      body: <p className="leading-relaxed">{project.solution}</p>,
+    },
     {
       title: "Key Features",
       body: (
@@ -48,23 +58,6 @@ export default async function ProjectBriefPage({ params }: Props) {
             <li key={d}>{d}</li>
           ))}
         </ul>
-      ),
-    },
-    {
-      title: "Architecture",
-      body: (
-        <div className="space-y-4">
-          <p className="leading-relaxed text-stone-600 dark:text-stone-400">
-            Placeholder for a Mermaid.js diagram. After adding{" "}
-            <code className="rounded bg-stone-200 px-1.5 py-0.5 font-mono text-sm text-stone-800 dark:bg-white/10 dark:text-stone-200">
-              mermaid
-            </code>
-            , render your chart here and keep the source below as documentation.
-          </p>
-          <pre className="glass-panel overflow-x-auto rounded-xl p-4 font-mono text-xs leading-relaxed text-stone-700 dark:text-stone-300">
-            {project.architectureMermaidPlaceholder}
-          </pre>
-        </div>
       ),
     },
     {
@@ -118,7 +111,7 @@ export default async function ProjectBriefPage({ params }: Props) {
               className="glass-panel p-8 sm:p-10"
             >
               <h2 className="text-xl font-semibold text-stone-900 dark:text-stone-50">
-                {index + 1}. {section.title}
+                {section.title}
               </h2>
               <div className="mt-4 text-stone-700 dark:text-stone-300">
                 {section.body}
@@ -127,6 +120,10 @@ export default async function ProjectBriefPage({ params }: Props) {
           ))}
         </div>
       </article>
+      <ContactSection />
+      <footer className="border-t border-stone-200/80 py-8 text-center text-sm text-stone-500 dark:border-white/10 dark:text-stone-500">
+        <p>© {new Date().getFullYear()} — Built with Next.js & Tailwind CSS</p>
+      </footer>
     </>
   );
 }

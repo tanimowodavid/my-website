@@ -24,7 +24,8 @@ export default function TicTacToePage() {
             Tic-Tac-Toe
           </h1>
           <p className="mt-2 text-stone-600 dark:text-stone-400">
-            You play as X. The AI uses minimax — you cannot win; try for a draw.
+            You play as X. The AI uses minimax so you cannot win, try for a
+            draw.
           </p>
           <div className="mt-10">
             <TicTacToe />

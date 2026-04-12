@@ -1,30 +1,80 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
+import type { IconType } from "react-icons";
 import {
-  Accessibility,
-  Code2,
+  Container,
+  Database,
   FileCode2,
+  LayoutGrid,
   Layers,
   Mail,
   MessageSquare,
   Server,
   Sparkles,
-  TestTube2,
 } from "lucide-react";
+import {
+  SiDjango,
+  SiDocker,
+  SiFastapi,
+  SiGit,
+  SiLinux,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiRedis,
+  SiTailwindcss,
+} from "react-icons/si";
 import { GithubIcon, LinkedinIcon } from "@/components/BrandSocialIcons";
 import { ContactForm } from "@/components/ContactForm";
 import { projects } from "@/lib/projects";
 
-const HERO_IMAGE = "https://picsum.photos/seed/portfolio-hero/560/640";
-const CONTACT_EMAIL = "hello@example.com";
+const HERO_IMAGE = "/me9-2.png";
+const CONTACT_EMAIL = "davidtanimowo01@gmail.com";
 
-const skills: { label: string; icon: LucideIcon }[] = [
-  { label: "TypeScript & React", icon: Code2 },
-  { label: "Next.js App Router", icon: Layers },
-  { label: "API design & performance", icon: Server },
-  { label: "Accessibility & design systems", icon: Accessibility },
-  { label: "Testing & CI", icon: TestTube2 },
+const skillCategories: {
+  title: string;
+  CategoryIcon: LucideIcon;
+  items: { name: string; TechIcon: IconType }[];
+}[] = [
+  {
+    title: "Frontend",
+    CategoryIcon: LayoutGrid,
+    items: [
+      { name: "React", TechIcon: SiReact },
+      { name: "Next.js", TechIcon: SiNextdotjs },
+      { name: "Tailwind CSS", TechIcon: SiTailwindcss },
+    ],
+  },
+  {
+    title: "Backend",
+    CategoryIcon: Server,
+    items: [
+      { name: "Python", TechIcon: SiPython },
+      { name: "FastAPI", TechIcon: SiFastapi },
+      { name: "Django", TechIcon: SiDjango },
+      { name: "Node.js", TechIcon: SiNodedotjs },
+    ],
+  },
+  {
+    title: "Database",
+    CategoryIcon: Database,
+    items: [
+      { name: "PostgreSQL", TechIcon: SiPostgresql },
+      { name: "Redis", TechIcon: SiRedis },
+    ],
+  },
+  {
+    title: "DevOps",
+    CategoryIcon: Container,
+    items: [
+      { name: "Docker", TechIcon: SiDocker },
+      { name: "Linux", TechIcon: SiLinux },
+      { name: "Git", TechIcon: SiGit },
+    ],
+  },
 ];
 
 const linkAccent =
@@ -128,9 +178,9 @@ export function AboutSection() {
             About
           </h2>
           <p className="mt-4 leading-relaxed text-stone-600 dark:text-stone-400">
-            I work at the intersection of product design and engineering—shipping
-            features that feel intentional, with code that teammates can extend
-            without guesswork.
+            I work at the intersection of product design and
+            engineering—shipping features that feel intentional, with code that
+            teammates can extend without guesswork.
           </p>
           <p className="mt-4 leading-relaxed text-stone-600 dark:text-stone-400">
             Outside of delivery work, I enjoy refining tooling, tightening build
@@ -145,20 +195,39 @@ export function AboutSection() {
             />
             Skills
           </h2>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-            {skills.map(({ label, icon: Icon }) => (
-              <li
-                key={label}
-                className="flex items-center gap-3 rounded-xl border border-stone-200/80 bg-stone-50/80 px-4 py-3 text-sm text-stone-700 dark:border-white/5 dark:bg-white/5 dark:text-stone-300"
-              >
-                <Icon
-                  className="h-5 w-5 shrink-0 text-teal-600 dark:text-teal-400"
-                  aria-hidden
-                />
-                {label}
-              </li>
-            ))}
-          </ul>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2">
+            {skillCategories.map(
+              ({ title, CategoryIcon: CatIcon, items }) => (
+                <div
+                  key={title}
+                  className="rounded-xl border border-stone-200/80 bg-stone-50/70 p-4 dark:border-white/5 dark:bg-white/4"
+                >
+                  <h3 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-stone-800 dark:text-stone-200">
+                    <CatIcon
+                      className="h-4 w-4 shrink-0 text-teal-600 dark:text-teal-400"
+                      aria-hidden
+                    />
+                    {title}
+                  </h3>
+                  <ul className="mt-3 space-y-2.5">
+                    {items.map(({ name, TechIcon }) => (
+                      <li
+                        key={name}
+                        className="flex items-center gap-3 text-sm text-stone-700 dark:text-stone-300"
+                      >
+                        <TechIcon
+                          className="h-5 w-5 shrink-0"
+                          aria-hidden
+                          title={name}
+                        />
+                        <span>{name}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ),
+            )}
+          </div>
         </div>
       </div>
     </section>

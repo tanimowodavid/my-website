@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { GeminiChat } from "@/components/GeminiChat";
+import { OpenAIChat } from "@/components/AIChat";
 import { ThemeProviders } from "@/components/ThemeProviders";
 import "./globals.css";
 
@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <ThemeProviders>
           {children}
-          <GeminiChat />
+          <OpenAIChat />
         </ThemeProviders>
       </body>
     </html>

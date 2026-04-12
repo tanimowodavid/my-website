@@ -2,11 +2,9 @@ import Link from "next/link";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const links = [
-  { href: "#intro", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#projects", label: "Projects" },
-  { href: "#playground", label: "Playground" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#contact", label: "Contact" },
 ] as const;
 
 export function Navbar() {
@@ -17,7 +15,7 @@ export function Navbar() {
           href="/#intro"
           className="text-sm font-semibold tracking-tight text-stone-900 dark:text-stone-50"
         >
-          Tanimowo David
+          David 😎
         </Link>
         <div className="flex flex-wrap items-center justify-end gap-2 sm:gap-3">
           <ul className="flex flex-wrap items-center justify-end gap-0.5 sm:gap-1">
