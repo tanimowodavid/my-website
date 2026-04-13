@@ -1,17 +1,31 @@
 "use client";
 
-import { Mail, MessageSquare, User } from "lucide-react";
+import { Mail, MessageSquare, User, Loader2 } from "lucide-react";
 import { useState } from "react";
+import { sendEmail } from "@/app/actions";
 
 const fieldClass =
   "rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-stone-900 outline-none ring-teal-500/30 placeholder:text-stone-400 focus:border-teal-500 focus:ring-2 dark:border-white/10 dark:bg-white/5 dark:text-stone-100 dark:placeholder:text-stone-500 dark:focus:border-teal-400/60";
 
 export function ContactForm() {
-  const [sent, setSent] = useState(false);
+  const [isPending, setIsPending] = useState(false);
+  const [status, setStatus] = useState<{ success?: boolean; message?: string } | null>(null);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
+    setIsPending(true);
+    setStatus(null);
+
+    const formData = new FormData(e.currentTarget);
+    const result = await sendEmail(formData);
+
+    setIsPending(false);
+    if (result.success) {
+      setStatus({ success: true, message: "Message received! I usually check my inbox every morning, so expect a reply within 24-48 hours." });
+      (e.target as HTMLFormElement).reset();
+    } else {
+      setStatus({ success: false, message: "Something went wrong. Please try again." });
+    }
   }
 
   return (
@@ -74,16 +88,22 @@ export function ContactForm() {
       <div className="flex flex-wrap items-center gap-4">
         <button
           type="submit"
-          className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow-md shadow-teal-900/20 transition hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-400"
+          disabled={isPending}
+          className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow-md shadow-teal-900/20 transition hover:bg-teal-700 disabled:opacity-50 dark:bg-teal-500 dark:hover:bg-teal-400"
         >
-          <MessageSquare className="h-4 w-4 shrink-0" aria-hidden />
-          Send message
+          {isPending ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : (
+            <MessageSquare className="h-4 w-4 shrink-0" aria-hidden />
+          )}
+          {isPending ? "Sending..." : "Send message"}
         </button>
-        {sent ? (
-          <span className="text-sm text-emerald-700 dark:text-emerald-400/90">
-            Thanks — your message was recorded locally for this demo.
+        
+        {status && (
+          <span className={`text-sm ${status.success ? "text-emerald-700 dark:text-emerald-400/90" : "text-red-600 dark:text-red-400"}`}>
+            {status.message}
           </span>
-        ) : null}
+        )}
       </div>
     </form>
   );

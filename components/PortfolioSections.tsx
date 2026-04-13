@@ -325,7 +325,7 @@ export function PlaygroundSection() {
             Playground
           </h2>
           <p className="mt-3 text-stone-600 dark:text-stone-400">
-            Small interactive demos—useful for trying patterns in isolation.
+            Small interactive demos. Have Fun!
           </p>
         </div>
         <div className="grid gap-8 md:grid-cols-2">
@@ -381,8 +381,7 @@ export function ContactSection() {
             Contact
           </h2>
           <p className="mt-3 text-stone-600 dark:text-stone-400">
-            Prefer email or social—this form is a styled demo (wire your own
-            endpoint when ready).
+            Whether you have a project in mind or just want to chat about tech, feel free to reach out via the form or connect through my socials.
           </p>
         </div>
         <div className="grid gap-10 lg:grid-cols-5">
@@ -408,12 +407,12 @@ export function ContactSection() {
                 LinkedIn
               </p>
               <a
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/in/tanimowodavid"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`mt-2 inline-flex items-center gap-2 text-sm font-medium ${linkAccent}`}
               >
-                linkedin.com/in/yourprofile
+                linkedin.com/in/tanimowodavid
               </a>
             </div>
             <div>
@@ -422,12 +421,12 @@ export function ContactSection() {
                 GitHub
               </p>
               <a
-                href="https://github.com"
+                href="https://github.com/tanimowodavid"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`mt-2 inline-flex items-center gap-2 text-sm font-medium ${linkAccent}`}
               >
-                github.com/yourusername
+                github.com/tanimowodavid
               </a>
             </div>
           </div>
