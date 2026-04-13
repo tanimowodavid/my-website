@@ -115,7 +115,7 @@ export function IntroSection() {
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-stone-600 dark:text-stone-300">
               I&apos;m a{" "}
               <strong className="font-semibold text-stone-800 dark:text-stone-100">
-                fullstack software engineer
+                Fullstack Software Engineer
               </strong>
               . I build scalable systems and neat interfaces — the kind that
               feel calm to use and straightforward to maintain.
@@ -178,13 +178,14 @@ export function AboutSection() {
             About
           </h2>
           <p className="mt-4 leading-relaxed text-stone-600 dark:text-stone-400">
-            I work at the intersection of product design and
-            engineering—shipping features that feel intentional, with code that
-            teammates can extend without guesswork.
+            While I build across the entire stack, my heart is in the architecture.
+             I focus on creating high-performance server logic and data structures that power 
+             great products without compromising on code quality or developer experience.
           </p>
           <p className="mt-4 leading-relaxed text-stone-600 dark:text-stone-400">
-            Outside of delivery work, I enjoy refining tooling, tightening build
-            pipelines, and mentoring through clear documentation.
+            When I'm not architecting backends or tightening build pipelines, you’ll likely find me deep 
+            in a strategy game, keeping up with the latest dev trends on YouTube, or 
+            refining my documentation to help the next developer hit the ground running.
           </p>
         </div>
         <div className="glass-panel p-8 sm:p-10">
@@ -243,8 +244,7 @@ export function ProjectsSection() {
             Projects
           </h2>
           <p className="mt-3 text-stone-600 dark:text-stone-400">
-            Selected work with concise case studies—code and narrative side by
-            side.
+            Selected work with concise case studies
           </p>
         </div>
         <div className="grid gap-8 md:grid-cols-2">
@@ -304,13 +304,13 @@ export function PlaygroundSection() {
       title: "Tic-Tac-Toe",
       description: "Classic two-player grid with win detection.",
       href: "/playground/tic-tac-toe",
-      imageUrl: "https://picsum.photos/seed/playground-tictactoe/800/480",
+      imageUrl: "/Tic-Tac-Toe.png",
     },
     {
       title: "Password Strength Checker",
       description: "Heuristic scoring with live feedback.",
       href: "/playground/password-strength",
-      imageUrl: "https://picsum.photos/seed/playground-password/800/480",
+      imageUrl: "/password.jpg",
     },
   ];
 
