@@ -122,7 +122,7 @@ export default async function ProjectBriefPage({ params }: Props) {
       </article>
       <ContactSection />
       <footer className="border-t border-stone-200/80 py-8 text-center text-sm text-stone-500 dark:border-white/10 dark:text-stone-500">
-        <p>© {new Date().getFullYear()} — Built with Next.js & Tailwind CSS</p>
+        <p>© {new Date().getFullYear()} — Tanimowo David</p>
       </footer>
     </>
   );
